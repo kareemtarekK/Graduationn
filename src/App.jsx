@@ -1,13 +1,12 @@
-import './App.css';
-import Signup from './components/Signup';
+import React from 'react'
+import Signup from './Authentication/Signup'
 
-const App = () =>{
-  
-return(
-   <>
-   <Signup/>
-   </>
-)
-};
+export default function App() {
 
- export default App;
+   return <React.Fragment>
+
+      <Signup />
+
+   </React.Fragment>
+
+}
