@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    justify-content:space-around;
+}
+.list{
+    display: flex;
+    gap: 17px;
+}
+ul{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+  }
+  ul li a{
+    text-decoration: none;
+  }
