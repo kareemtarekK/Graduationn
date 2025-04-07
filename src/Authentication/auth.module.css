@@ -88,6 +88,9 @@
     color: var(--gray-color-2);
   }
 }
+.pass_input{
+  padding-right: 38px !important;
+}
 .forget{
     width: 100%;
     display: flex;

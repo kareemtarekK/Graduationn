@@ -1,8 +1,16 @@
 import authCSS from './auth.module.css';
+import { FaEye,FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
+
 const Signup = () => {
+    const [isHiddenPassword, setIsHiddenPassword]=useState(true);
+    const [isHiddenConPassword, setIsHiddenConPassword]=useState(true);
+    
+    const [password,setPassword]= useState("");
+    const [confirmPassword,setConfirmPassword]= useState("");
 
     return (
-
+        
         <section className={authCSS.body}>
 
             <div className={authCSS.container}>
@@ -40,12 +48,48 @@ const Signup = () => {
 
                     <div className={`${authCSS.input_field} ${authCSS.half_field}`}>
                         <label htmlFor="">Password</label>
-                        <input type="password" placeholder="Enter your password"/>
+                        <div className={authCSS.relative}>
+                            <input 
+                                className={authCSS.pass_input}
+                                onChange= {(e) => setPassword(e.target.value)} 
+                                type= {isHiddenPassword ?"password":"text"}
+                                placeholder="Enter Your Password"
+                                id="password"
+                                name="password"
+                            />
+
+                            <div className={authCSS.eye_container}>
+                                {password && (
+                                    isHiddenPassword ?
+                                    <FaEye onClick={() => setIsHiddenPassword(false)} className={authCSS.iconEyes} />:
+                                    <FaEyeSlash onClick={() => setIsHiddenPassword(true)} className={authCSS.iconEyes} />
+                                )}
+                            </div>
+
+                        </div>                    
                     </div>
 
                     <div className={`${authCSS.input_field} ${authCSS.half_field}`}>
                         <label htmlFor="">Confirm Yor Password</label>
-                        <input type="password" placeholder="Confirm your Password"/>
+                        <div className={authCSS.relative}>
+                            <input 
+                                className={authCSS.pass_input}
+                                onChange= {(e) => setConfirmPassword(e.target.value)} 
+                                type= {isHiddenConPassword ?"password":"text"}
+                                placeholder="Confirm Your Password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                            />
+
+                            <div className={authCSS.eye_container}>
+                                {confirmPassword && (
+                                    isHiddenConPassword ?
+                                    <FaEye onClick={() => setIsHiddenConPassword(false)} className={authCSS.iconEyes} />:
+                                    <FaEyeSlash onClick={() => setIsHiddenConPassword(true)} className={authCSS.iconEyes} />
+                                )}
+                            </div>
+
+                        </div>                    
                     </div>
 
                     <button className={authCSS.submit} type="submit">Sign Up</button>
@@ -55,6 +99,7 @@ const Signup = () => {
                     </div>
 
                 </form>
+
             </div>
 
         </section>
