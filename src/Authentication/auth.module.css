@@ -71,14 +71,14 @@
 }
 
 .input_field input {
-  width: 100%;
-  padding: 10px;
-  outline: none;
-  font-size: 16px;
-  color: var(--black-color);
-  border: solid 1px var(--black-color-2);
-  border-radius: 8px;
-  transition: 0.3s;
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    font-size: 16px;
+    color: var(--black-color);
+    border:solid 1px var(--black-color-2);
+    border-radius: 8px;
+    transition: 0.3s;
 
   &:focus {
     border-color: var(--blue-color);
@@ -88,10 +88,10 @@
     color: var(--gray-color-2);
   }
 }
-.forget {
-  width: 100%;
-  display: flex;
-  justify-content: end;
+.forget{
+    width: 100%;
+    display: flex;
+    justify-content: end;
 }
 .forget a {
   color: var(--blue-color);
@@ -135,6 +135,26 @@
   color: var(--blue-color);
 }
 
+.relative {
+    position: relative;
+}
+
+.eye_container{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 38px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconEyes {
+    font-size: 18px;
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 570px) {
   .container {
     padding: 20px 4.5%;
@@ -145,13 +165,13 @@
     width: 100%;
   }
 }
-.relative {
-  position: relative;
+.relative{
+    position: relative;
 }
-.iconEyes {
-  position: absolute;
-  right: 1rem;
-  font-size: 18px;
-  cursor: pointer;
-  top: 30%;
+.iconEyes{
+    position: absolute;
+    right: 1rem;
+    font-size: 18px;
+    cursor: pointer;
+    top: 30%;
 }
