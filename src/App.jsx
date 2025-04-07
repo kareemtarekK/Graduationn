@@ -1,13 +1,13 @@
-// import './App.css';
-// import Signup from './components/Signup';
+import Login from "./Authentication/Login";
 
-import Login from "./components/Login";
 
 const App = () =>{
   
 return(
    <>
-   <Login/>
+   {/* <Signup/> */}
+   <Login/> 
+
    </>
 )
 };
