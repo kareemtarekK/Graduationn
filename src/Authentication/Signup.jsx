@@ -10,7 +10,7 @@ const Signup = () => {
     const [confirmPassword,setConfirmPassword]= useState("");
 
     return (
-        
+
         <section className={authCSS.body}>
 
             <div className={authCSS.container}>
@@ -27,7 +27,7 @@ const Signup = () => {
                     </div>
 
                     <div className={`${authCSS.input_field} ${authCSS.three_field}`}>
-                        <label htmlFor="">Last Name</label>
+                        <label htmlFor="">Second Name</label>
                         <input type="text" placeholder="Last Name"/>
                     </div>
 

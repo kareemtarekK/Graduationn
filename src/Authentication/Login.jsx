@@ -68,10 +68,10 @@ export default function Login() {
                 </div>
 
                 <div className={authCSS.forget} >
-                <a href="" >Forget Your Password? </a>
+                <a  href="" >Forget Your Password? </a>
                 </div>
 
-                <button className={authCSS.submit} type="submit">Log In</button>
+                <button  className={authCSS.submit} type="submit">Log In</button>
                 
                     <div className={authCSS.submit_container}>
                         <p className={authCSS.login}> Do not have an account?<a href="">Sign Up</a></p>

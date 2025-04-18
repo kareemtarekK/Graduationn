@@ -1,13 +1,15 @@
 // import Login from "./Authentication/Login";
-import Signup from "./Authentication/Signup";
+//import Signup from "./Authentication/Signup";
+import Home from "./Pages/Home/Home";
 
 
 const App = () =>{
   
 return(
    <>
-   { <Signup/> }
-   {/* <Login/>  */}
+   <Home/>
+   {/* <Signup/>  */}
+   {/* <Login/>   */}
 
    </>
 )
