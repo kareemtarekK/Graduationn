@@ -1,8 +1,128 @@
 .navbar{
     display: flex;
+    border-radius: 12px;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
+    text-align: center;
+    width: 1272px;
+    height: 75px;
+    padding: 11px 11px;
     margin: auto;
-    padding: 0 2px;
+    border-top: none;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    
 }
+.navbar ul a{
+width: 45;
+height: 24;
+top: 24px;
+left: 739px;
+font-weight: 400;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0%;
+margin: 13px;
+}
+.navbar ul{
+    display: flex;
+}
+.navbar .logo{
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0%;    
+    color: rgba(31, 41, 55, 1);
+    width: 196;
+    height: 18;
+    top: 20px;
+    left: 68px;
+}
+
+.navbar .account .login{
+    width: 42;
+    height: 24;
+    top: 24px;
+    left: 1080px;
+    font-weight: 00;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+}
+.account{
+}
+.account .rege{
+    margin: 10px;
+    width: 94;
+    height: 40;
+    top: 16px;
+    left: 1154px;
+    border-radius: 8px;
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    background: rgba(59, 130, 246, 1);
+    color: #fff;
+    padding: 10px 15px;
+}
+.menubtn{
+        color: #333;
+        font-size: 4rem;
+        cursor: pointer;
+        display: none;
+    }
+
+
+    @media (max-width:1200px){
+        html{
+            font-size: 42%;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            scroll-padding-top: 7.5rem;
+         }
+         body{
+            overflow-x: hidden;
+        }
+         .navbar .logo{
+            font-size: 16px;
+            left: 0;
+         }
+        .menubtn{
+            display: inline;
+            left: 1;
+            font-size: 5rem;
+            
+        }
+        .navbar{
+            width: 100%;
+        }
+        header  .navbar #links   {
+            background-color: #fff;
+            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            border-top: none;
+            justify-content: space-evenly;
+            position: absolute;
+            height: 74vh;
+            width: 360px;
+            top: -770px;
+            border-radius: 18px;
+            right: 13px;  
+            margin-top: 1rem;
+            transition: ease .8s;          
+            }
+            header  .navbar #links ul li a{
+             justify-content: center;
+             border: solid #e5e5e6 .5px;
+             padding: 17px;
+             border-radius: 8px;
+             display: flex;
+            }
+            header .navbar #links.active{
+             top:10%
+            }
+          
+    }
