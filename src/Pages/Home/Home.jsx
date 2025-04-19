@@ -5,10 +5,9 @@ import Hero from './Hero';
 const Home = () => {
   return (
     <>
-     <Header/>
-     <Hero/>
+      <Header/>
+      <Hero/>
     </>
-    
   )
 }
 

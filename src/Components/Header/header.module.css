@@ -1,128 +1,175 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 2.25%;
+}
+
 .navbar{
     display: flex;
-    border-radius: 12px;
+    border-radius: 10px;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
-    width: 1272px;
-    height: 75px;
-    padding: 11px 11px;
+    width: 100%;
+    padding: 20px 2.25%;
     margin: auto;
-    border-top: none;
-    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-    
+    background-color: var(--white-color);
+    box-shadow: 0px 0px 10px var(--black-opacity-color-1);
 }
-.navbar ul a{
-width: 45;
-height: 24;
-top: 24px;
-left: 739px;
-font-weight: 400;
-font-size: 16px;
-line-height: 24px;
-letter-spacing: 0%;
-margin: 13px;
+
+.logo{
+    height: 50px;
 }
-.navbar ul{
+
+.logo img{
+    height: 100%;
+}
+
+.links{
     display: flex;
-}
-.navbar .logo{
-    font-weight: 900;
-    font-size: 18px;
-    line-height: 18px;
-    letter-spacing: 0%;    
-    color: rgba(31, 41, 55, 1);
-    width: 196;
-    height: 18;
-    top: 20px;
-    left: 68px;
+    align-items: center;
+    gap: 15px;
 }
 
-.navbar .account .login{
-    width: 42;
-    height: 24;
-    top: 24px;
-    left: 1080px;
-    font-weight: 00;
+.links a{
+    display: inline-block;
+    padding: 10px;
+    font-weight: 500;
     font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0%;
-    text-align: center;
+    color: var(--gray-color-2);
+    border-radius: 5px;
+    transition: 0.3s;
+
+    &:hover{
+        color: var(--blue-color) !important;
+        background-color: var(--gray-color-3);
+    }
 }
+
+.active_li{
+    color: var(--blue-color) !important;
+    background-color: var(--gray-color-3);
+}
+
+
 .account{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: ease 0.3s;
 }
-.account .rege{
-    margin: 10px;
-    width: 94;
-    height: 40;
-    top: 16px;
-    left: 1154px;
-    border-radius: 8px;
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
-    letter-spacing: 0%;
+
+.login{
     text-align: center;
-    background: rgba(59, 130, 246, 1);
-    color: #fff;
-    padding: 10px 15px;
+    padding: 10px 20px;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: var(--blue-color);
+        background-color: var(--gray-color-3);
+    transition: 0.3s;
+
+    &:hover{
+        color: var(--white-color);
+        background-color: var(--blue-color);
+    }
 }
-.menubtn{
-        color: #333;
-        font-size: 4rem;
-        cursor: pointer;
-        display: none;
+
+.account .register{
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    background-color: var(--blue-color);
+    color: var(--white-color);
+}
+
+.burger_cont{
+    display: none;
+}
+
+.menu_btn{
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 3rem;
+    color: var(--blue-color);
+    background-color: var(--gray-color-3);
+}
+
+/* ================================================= */
+
+@media only screen and (max-width:1035px){
+
+    .burger_cont{
+        display: block;
     }
 
-
-    @media (max-width:1200px){
-        html{
-            font-size: 42%;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-            scroll-padding-top: 7.5rem;
-         }
-         body{
-            overflow-x: hidden;
-        }
-         .navbar .logo{
-            font-size: 16px;
-            left: 0;
-         }
-        .menubtn{
-            display: inline;
-            left: 1;
-            font-size: 5rem;
-            
-        }
-        .navbar{
-            width: 100%;
-        }
-        header  .navbar #links   {
-            background-color: #fff;
-            box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-            flex-direction: column;
-            border-top: none;
-            justify-content: space-evenly;
-            position: absolute;
-            height: 74vh;
-            width: 360px;
-            top: -770px;
-            border-radius: 18px;
-            right: 13px;  
-            margin-top: 1rem;
-            transition: ease .8s;          
-            }
-            header  .navbar #links ul li a{
-             justify-content: center;
-             border: solid #e5e5e6 .5px;
-             padding: 17px;
-             border-radius: 8px;
-             display: flex;
-            }
-            header .navbar #links.active{
-             top:10%
-            }
-          
+    .links{
+        position: fixed;
+        width: 95.5%;
+        height: calc(100vh - 150px);
+        top: 110px;
+        left: 2.25%;
+        padding: 20px 2.25%;
+        flex-direction: column;
+        gap: 25px;
+        border-radius: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: ease .3s;          
+        background-color: var(--white-color);
+        box-shadow: 0px 0px 10px var(--black-opacity-color-1);
     }
+
+    .links li{
+        width: 100%;
+        text-align: center;
+    }
+
+    .links a{
+        width: 100% !important;
+    }
+
+    .account{
+        padding: 0px 20px;
+        position: fixed;
+        width: 95.5%;
+        left: 2.25%;
+        bottom: 60px;
+        opacity: 0;
+        visibility: hidden;
+        justify-content: center;
+    }
+
+    .account a{
+        width: 50%;
+    }
+
+    #links.active{
+        top: 130px;
+        opacity: 1;
+        visibility: visible;
+    }
+    .account.active_auth{
+        bottom: 40px;
+        opacity: 1;
+        visibility: visible;
+    }
+
+}
+
+@media only screen and (max-width:530px){
+
+    .account{
+        flex-wrap: wrap;
+    }
+
+    .account a{
+        width: 100%;
+    }
+
+}

@@ -4,9 +4,10 @@ import Home from "./Pages/Home/Home";
 
 
 const App = () =>{
-  
+
 return(
    <>
+
    <Home/>
    {/* <Signup/>  */}
    {/* <Login/>   */}
@@ -14,4 +15,5 @@ return(
    </>
 )
 };
- export default App;
+
+export default App;

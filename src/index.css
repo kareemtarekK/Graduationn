@@ -4,9 +4,9 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     list-style: none;
     text-decoration: none;
+    box-sizing: border-box;
 }
 
 :root{
@@ -31,11 +31,16 @@
     --white-opacity-color: rgba(255, 255, 255, 0.75);
     --gray-opacity-color-3: rgba(233, 236, 239, 0.5);
     --black-opacity-color: rgba(45, 45, 45, 0.95);
+    --black-opacity-color-1: rgba(45, 45, 45, 0.15);
 }
 
 html{
     font-family: "Manrope", sans-serif;
 }
-.navbar{
-    background-color:goldenrod ;
-  }
+
+body{
+    width: 100%;
+    overflow-x: hidden;
+    background-color: var(--white-color);
+}
+

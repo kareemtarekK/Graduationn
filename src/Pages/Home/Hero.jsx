@@ -2,8 +2,8 @@
 
 export default function Hero() {
   return (
-    <div>
-      
+    <div style={{width: '100%', height: '100vh', background: 'var(--salt-color)'}}>
+      ddd
     </div>
   )
 }
