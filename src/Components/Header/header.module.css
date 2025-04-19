@@ -1,9 +1,8 @@
 .header{
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    padding: 20px 2.25%;
+    padding: 16px 0px 10px;
+
+
 }
 
 .navbar{
@@ -12,10 +11,11 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 20px 2.25%;
+    padding: 20px 2.25% ;
     margin: auto;
     background-color: var(--white-color);
-    box-shadow: 0px 0px 10px var(--black-opacity-color-1);
+    box-shadow: 0px 0px 11px var(--black-opacity-color-1);
+
 }
 
 .logo{

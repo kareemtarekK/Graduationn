@@ -1,0 +1,210 @@
+/* Main container */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+  }
+  
+  /* Vehicle Status Checker styles */
+  .header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .title {
+    font-size: 29px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .primaryButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 18px;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .outlineButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #111827;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 12px 18px;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .outlineButton:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .buttonIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+  
+  /* Statistics Dashboard styles */
+  .statsContainer {
+    width: 100%;
+  }
+  
+  .statsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .statsCard {
+    background-color: white;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    margin-right: 16px;
+    color: #6b7280;
+  }
+  
+  .statsContent {
+    flex: 1;
+  }
+  
+  .statsLabel {
+    font-size: 14px;
+    color: #6b7280;
+    margin: 0 0 4px 0;
+  }
+  
+  .statsValue {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+  
+  .infoBox {
+    background-color: #f9fafb;
+    border-radius: 8px;
+    padding: 13px;
+   position: relative;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+
+  }
+  
+  .infoIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    color: #6b7280;
+  }
+  
+  .infoText {
+    font-size: 14px;
+    color: #6b7280;
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    left: 30%;
+    width: 500px;
+  }
+  
+  /* Media queries for responsive design */
+  @media (min-width: 640px) {
+    .buttonContainer {
+      flex-direction: row;
+    }
+  
+    .statsGrid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .statsGrid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  /* FAQ styles */
+.wrapper{
+  display: flex;
+  height: 70vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.accordion{
+ max-width: 70rem;
+
+}
+.item{
+padding: 10px 20px;
+}
+  .title2{
+    display: flex;
+    justify-content: space-between;
+    font-size: 19px;
+    font-weight: 700;
+    width: 70rem;
+
+    color: #111827;
+    background-color: var(--color-white);
+    padding: 14px 17px;
+    border-radius: 13px;
+}
+.content{
+  color: var(--gray-color-2);
+  font-size: 1rem;
+  letter-spacing: .5px;
+  line-height: 1.5rem;
+}
+  
+  
