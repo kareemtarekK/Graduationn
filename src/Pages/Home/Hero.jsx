@@ -1,225 +1,84 @@
-//import heroCss from './home.module.css'
-//import heroCss from "./home.module.css";
-//import hero from "./vehicle-status-checker.module.css"
+import { IoIosCheckmarkCircleOutline, IoIosSearch } from "react-icons/io";
 import hero from "./home.module.css";
+import { LuBadgeInfo, LuCircleAlert } from "react-icons/lu";
+import { FiFileText } from "react-icons/fi";
+import { MdOutlineAccessTime } from "react-icons/md";
 
 export default function Hero() {
+
+  const dataArray = [
+
+    {id: 1, bgColor: '#EFF6FF', icon: < FiFileText/>, title: 'Total Reports Submitted', num: '12,458'},
+    {id: 2, bgColor: '#FEF2F2', icon: < LuCircleAlert/>, title: 'Verified Stolen Vehicles', num: '1,893'},
+    {id: 3, bgColor: '#FEF3C7', icon: < MdOutlineAccessTime/>, title: 'Reports Under Review', num: '246'},
+    {id: 4, bgColor: '#F0FDF4', icon: < IoIosCheckmarkCircleOutline/>, title: 'Appeals Submitted', num: '89'},
+
+  ];
+
   return (
+
     <div className={hero.container}>
-      {/* Vehicle Status Checker Section */}
-      <div className={hero.header}>
-        <h1 className={hero.title}>Check Your Vehicle Status</h1>
-        <p className={hero.description}>
-          Verify vehicle plate numbers and report theft cases to the authorities.
-        </p>
-      </div>
 
-      <div className={hero.buttonContainer}>
-        <button className={hero.primaryButton}>
-          <SearchIcon />
-          <span>Check Plate Now</span>
-        </button>
-        <button className={hero.outlineButton}>
-          <AlertTriangleIcon />
-          <span>Report a Stolen Vehicle</span>
-        </button>
-      </div>
+      <div className={hero.header_cont}>
 
-      <div className={hero.statsContainer}>
-        <div className={hero.statsGrid}>
-          <div className={hero.statsCard}>
-            <div className={hero.iconContainer}>
-              <DocumentIcon />
-            </div>
-            <div className={hero.statsContent}>
-              <p className={hero.statsLabel}>Total Reports Submitted</p>
-              <h3 className={hero.statsValue}>12,458</h3>
-            </div>
-          </div>
+        <div className={hero.header}>
 
-          <div className={hero.statsCard}>
-            <div className={hero.iconContainer}>
-              <AlertIcon />
-            </div>
-            <div className={hero.statsContent}>
-              <p className={hero.statsLabel}>Verified Stolen Vehicles</p>
-              <h3 className={hero.statsValue}>1,893</h3>
-            </div>
-          </div>
+          <h1 className={hero.title}>Check Your Vehicle Status</h1>
 
-          <div className={hero.statsCard}>
-            <div className={hero.iconContainer}>
-              <ClockIcon />
-            </div>
-            <div className={hero.statsContent}>
-              <p className={hero.statsLabel}>Reports Under Review</p>
-              <h3 className={hero.statsValue}>246</h3>
-            </div>
-          </div>
-
-          <div className={hero.statsCard}>
-            <div className={hero.iconContainer}>
-              <CheckIcon />
-            </div>
-            <div className={hero.statsContent}>
-              <p className={hero.statsLabel}>Appeals Submitted</p>
-              <h3 className={hero.statsValue}>89</h3>
-            </div>
-          </div>
-        </div>
-
-        <div className={hero.infoBox}>
-          <div className={hero.infoIconContainer}>
-            <InfoIcon />
-          </div>
-          <p className={hero.infoText}>
-            All reports are reviewed by authorized officers. You will receive updates via your account. Our platform is
-            directly connected with law enforcement databases to ensure accurate and up-to-date information.
+          <p className={hero.description}>
+            Verify vehicle plate numbers and report theft cases to the authorities.
           </p>
+
         </div>
+
+        <div className={hero.buttonContainer}>
+
+          <button className={hero.primaryButton}>
+            <IoIosSearch />
+            <span>Check Plate Now</span>
+          </button>
+
+          <button className={hero.outlineButton}>
+            <LuCircleAlert />
+            <span>Report a Stolen Vehicle</span>
+          </button>
+
+        </div>
+
       </div>
-      
+
+      <div className={hero.statsGrid}>
+
+        {dataArray.map((card, index) => <div key={index} className={hero.statsCard}>
+
+          <div className={hero.iconContainer} style={{backgroundColor: card.bgColor}}>
+            {card.icon}
+          </div>
+
+          <div className={hero.statsContent}>
+            <p className={hero.statsLabel}>{card.title}</p>
+            <h3 className={hero.statsValue}>{card.num}</h3>
+          </div>
+
+        </div>)}
+
+      </div>
+
+      <div className={hero.infoBox}>
+
+        <div className={hero.infoIconContainer}>
+          <LuBadgeInfo />
+        </div>
+
+        <p className={hero.infoText}>
+          All reports are reviewed by authorized officers. You will receive updates via your account. Our platform is
+          directly connected with law enforcement databases to ensure accurate and up-to-date information.
+        </p>
+
+      </div>
+
     </div>
 
- 
   )
-}
 
-// Icon components
-function SearchIcon() {
-  return (
-    <svg
-      className={hero.buttonIcon}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-    </svg>
-  )
-}
-
-function AlertTriangleIcon() {
-  return (
-    <svg
-      className={hero.buttonIcon}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
-      <line x1="12" y1="9" x2="12" y2="13"></line>
-      <line x1="12" y1="17" x2="12.01" y2="17"></line>
-    </svg>
-  )
-}
-
-function DocumentIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-      <polyline points="14 2 14 8 20 8"></polyline>
-    </svg>
-  )
-}
-
-function AlertIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
-      <line x1="12" y1="9" x2="12" y2="13"></line>
-      <line x1="12" y1="17" x2="12.01" y2="17"></line>
-    </svg>
-  )
-}
-
-function ClockIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 6 12 12 16 14"></polyline>
-    </svg>
-  )
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10"></circle>
-      <path d="m9 12 2 2 4-4"></path>
-    </svg>
-  )
-}
-
-function InfoIcon() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10"></circle>
-      <line x1="12" y1="16" x2="12" y2="12"></line>
-      <line x1="12" y1="8" x2="12.01" y2="8"></line>
-    </svg>
-  )
 }

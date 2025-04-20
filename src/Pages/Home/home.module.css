@@ -1,179 +1,182 @@
 /* Main container */
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px 16px;
-    background-color: #f9fafb;
-    border-radius: 8px;
-  }
-  
-  /* Vehicle Status Checker styles */
-  .header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .title {
-    font-size: 29px;
-    font-weight: 700;
-    color: #111827;
-    margin: 0 0 8px 0;
-  }
-  
-  .description {
-    font-size: 16px;
-    color: #6b7280;
-    margin: 0;
-  }
-  
-  .buttonContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 40px;
-  }
-  
-  .primaryButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--blue-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 12px 18px;
-    font-size: 19px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .outlineButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    color: #111827;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    padding: 12px 18px;
-    font-size: 19px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .outlineButton:hover {
-    background-color: #f3f4f6;
-  }
-  
-  .buttonIcon {
-    width: 16px;
-    height: 16px;
-    margin-right: 8px;
-  }
-  
-  /* Statistics Dashboard styles */
-  .statsContainer {
-    width: 100%;
-  }
-  
-  .statsGrid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  
-  .statsCard {
-    background-color: white;
-    border-radius: 8px;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  }
-  
-  .iconContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 8px;
-    margin-right: 16px;
-    color: #6b7280;
-  }
-  
-  .statsContent {
-    flex: 1;
-  }
-  
-  .statsLabel {
-    font-size: 14px;
-    color: #6b7280;
-    margin: 0 0 4px 0;
-  }
-  
-  .statsValue {
-    font-size: 24px;
-    font-weight: 700;
-    color: #111827;
-    margin: 0;
-  }
-  
-  .infoBox {
-    background-color: #f9fafb;
-    border-radius: 8px;
-    padding: 13px;
-   position: relative;
-    display: flex;
-    text-align: center;
-    justify-content: center;
 
+.container {
+  width: 100%;
+  padding: 50px 4.5%;
+  padding-top: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background-color: var(--salt-color);
+}
+
+/* Vehicle Status Checker styles */
+
+.header_cont{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--black-color);
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--gray-color-2);
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonContainer button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttonContainer button svg{
+  font-size: 1.25rem;
+}
+
+.primaryButton {
+  color: var(--salt-color);
+  border: none;
+  background-color: var(--blue-color);
+}
+
+.outlineButton {
+  background-color: var(--salt-color);
+  color: var(--blue-color);
+  border: 1px solid var(--blue-color);
+}
+
+/* Statistics Dashboard styles */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.statsCard {
+  background-color: var(--white-color);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--gray-color-3);
+}
+
+.iconContainer {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: var(--black-color);
+  background: var(--gray-color-3);
+}
+
+.iconContainer svg{
+  font-size: 1.5rem;
+}
+
+.statsContent {
+  flex: 1;
+}
+
+.statsLabel {
+  font-size: 1rem;
+  color: var(--gray-color-2);
+}
+
+.statsValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--black-color);
+}
+
+.infoBox {
+  width: fit-content;
+  margin: auto;
+  background-color: var(--white-color);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--gray-color-3);
+
+}
+
+.infoIconContainer svg {
+  font-size: 1.5rem;
+  color: var(--gray-color-2);
+}
+
+.infoText {
+  font-size: 0.875rem;
+  color: var(--gray-color-2);
+  max-width: 500px;
+}
+
+/* Media queries for responsive design */
+
+@media (max-width: 1245px) {
+  .buttonContainer {
+    flex-direction: row;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 620px) {
+  .title{
+    font-size: 2.5rem;
   }
   
-  .infoIconContainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 24px;
-    height: 24px;
-    margin-right: 12px;
-    color: #6b7280;
+  .description{
+    font-size: 0.75rem;
   }
-  
-  .infoText {
-    font-size: 14px;
-    color: #6b7280;
-    line-height: 1.5;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    left: 30%;
-    width: 500px;
+
+  .buttonContainer{
+    flex-direction: column;
   }
-  
-  /* Media queries for responsive design */
-  @media (min-width: 640px) {
-    .buttonContainer {
-      flex-direction: row;
-    }
-  
-    .statsGrid {
-      grid-template-columns: repeat(2, 1fr);
-    }
+
+  .buttonContainer button{
+    width: 100%;
   }
-  
-  @media (min-width: 1024px) {
-    .statsGrid {
-      grid-template-columns: repeat(4, 1fr);
-    }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
   }
-  /* FAQ styles */
+}
+
+/* FAQ styles */
 .wrapper{
   display: flex;
   height: 70vh;
@@ -206,5 +209,3 @@ padding: 10px 20px;
   letter-spacing: .5px;
   line-height: 1.5rem;
 }
-  
-  

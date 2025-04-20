@@ -38,6 +38,19 @@ html{
     font-family: "Manrope", sans-serif;
 }
 
+::-webkit-scrollbar {
+
+    width: 5px;
+    background-color: var(--white-color);
+
+}
+
+::-webkit-scrollbar-thumb {
+
+    background-color: var(--blue-color);
+
+}
+
 body{
     width: 100%;
     overflow-x: hidden;
