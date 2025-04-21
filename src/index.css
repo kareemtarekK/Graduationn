@@ -57,3 +57,7 @@ body{
     background-color: var(--white-color);
 }
 
+.active{
+    color: var(--blue-color) !important;
+    background-color: var(--gray-color-3);
+}

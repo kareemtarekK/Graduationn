@@ -2,6 +2,7 @@ import { IoClose, IoMenuOutline } from "react-icons/io5";
 import headerCss from "./header.module.css";
 import { useEffect, useState } from "react";
 import logoImg from '../../assets/Images/logo.png';
+import { Link, NavLink } from "react-router-dom";
 
 
 export default function Header() {
@@ -24,6 +25,8 @@ export default function Header() {
 
     }
 
+    handleOnScroll()
+
     window.addEventListener('scroll' , handleOnScroll);
 
     return () => {
@@ -38,9 +41,9 @@ export default function Header() {
 
       <nav className={`${headerCss.navbar} ${isScroll ? headerCss.navbar_scroll : ''}`}>
 
-        <a href="#" className={headerCss.logo}>
+        <Link to={'/'} className={headerCss.logo}>
           <img src={logoImg} alt={'logoImg'} />
-        </a>
+        </Link>
 
         <ul 
           id={headerCss.links}
@@ -53,31 +56,31 @@ export default function Header() {
         >
 
           <li>
-            <a className={headerCss.active_li} href="#">Home</a>
+            <NavLink to={'/'}>Home</NavLink>
           </li>
 
           <li>
-            <a href="#">Check Plate</a>
+            <NavLink to={'/checkPlate'}>Check Plate</NavLink>
           </li>
 
           <li>
-            <a href="#">Report Theft</a>
+            <NavLink to={'/jjj'}>Report Theft</NavLink>
           </li>
 
           <li>
-            <a href="#">Track Report</a>
+            <NavLink to={'/uv'}>Track Report</NavLink>
           </li>
 
           <li>
-            <a href="#">Appeaks</a>
+            <NavLink to={'/yyh'}>Appeaks</NavLink>
           </li>
 
         </ul>
 
         <div className={`${headerCss.account} ${isScroll ? headerCss.account_scroll : ''} ${isOpen ? headerCss.active_auth : ''}`}>
 
-          <a href="#" className={headerCss.login}>Login</a>
-          <a href="#" className={headerCss.register}>Register</a>
+          <Link to={'/login'} className={headerCss.login}>Login</Link>
+          <Link to={'/register'} className={headerCss.register}>Register</Link>
 
         </div>
 

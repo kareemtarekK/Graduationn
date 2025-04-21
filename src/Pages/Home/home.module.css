@@ -142,6 +142,68 @@
   max-width: 500px;
 }
 
+/* FAQ styles */
+
+.acc_cont{
+  width: 100%;
+  padding: 50px 2.25%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.sec_title{
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--black-color);
+  text-align: center;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.item{
+  width: 100%;
+  padding: 20px 2.25%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 10px;
+  background-color: var(--salt-color);
+  border: 1px solid var(--gray-color-3);
+  cursor: pointer;
+}
+
+.title2{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--black-color);
+}
+
+.title2 span{
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.arrow_side_active{
+  transform: rotate(180deg);
+}
+
+.content{
+  color: var(--gray-color-2);
+  font-size: 1rem;
+}
+
 /* Media queries for responsive design */
 
 @media (max-width: 1245px) {
@@ -155,57 +217,23 @@
 }
 
 @media (max-width: 620px) {
-  .title{
+  .title {
     font-size: 2.5rem;
   }
-  
-  .description{
+
+  .description {
     font-size: 0.75rem;
   }
 
-  .buttonContainer{
+  .buttonContainer {
     flex-direction: column;
   }
 
-  .buttonContainer button{
+  .buttonContainer button {
     width: 100%;
   }
 
   .statsGrid {
     grid-template-columns: 1fr;
   }
-}
-
-/* FAQ styles */
-.wrapper{
-  display: flex;
-  height: 70vh;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-.accordion{
- max-width: 70rem;
-
-}
-.item{
-padding: 10px 20px;
-}
-  .title2{
-    display: flex;
-    justify-content: space-between;
-    font-size: 19px;
-    font-weight: 700;
-    width: 70rem;
-
-    color: #111827;
-    background-color: var(--color-white);
-    padding: 14px 17px;
-    border-radius: 13px;
-}
-.content{
-  color: var(--gray-color-2);
-  font-size: 1rem;
-  letter-spacing: .5px;
-  line-height: 1.5rem;
 }
