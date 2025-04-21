@@ -1,5 +1,5 @@
-// import Login from "./Authentication/Login";
-//import Signup from "./Authentication/Signup";
+ import Login from "./Authentication/Login";
+import Signup from "./Authentication/Signup";
 import Home from "./Pages/Home/Home";
 
 
@@ -9,8 +9,8 @@ return(
    <>
 
    <Home/>
-   {/* <Signup/>  */}
-   {/* <Login/>   */}
+    <Signup/>  
+    <Login/>   
 
    </>
 )
