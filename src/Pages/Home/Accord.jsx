@@ -1,5 +1,5 @@
 import hero from "./home.module.css";
-import FqCard from "../../components/F&Q-Card/FqCard";
+import FqCard from "../../components/FQ-Card/FqCard";
 
 
 export default function Accord() {
