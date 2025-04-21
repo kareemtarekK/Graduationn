@@ -1,22 +1,42 @@
 import { IoClose, IoMenuOutline } from "react-icons/io5";
 import headerCss from "./header.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logoImg from '../../assets/Images/logo.png';
 
 
 export default function Header() {
 
   const [isOpen,setIsOpen] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
 
   const toggleMenu = ()=> {
     setIsOpen(!isOpen);
   };
 
+  useEffect(() => {
+
+    const handleOnScroll = () => {
+
+      const scrollY = window.scrollY;
+
+      if(scrollY > 0){setIsScroll(true)}
+      else{setIsScroll(false)}
+
+    }
+
+    window.addEventListener('scroll' , handleOnScroll);
+
+    return () => {
+      window.removeEventListener('scroll' , handleOnScroll);
+    }
+
+  }, []);
+
   return (
 
-    <header className={headerCss.header}>
+    <header className={`${headerCss.header} ${isScroll ? headerCss.header_scroll : ''}`}>
 
-      <nav className={headerCss.navbar}>
+      <nav className={`${headerCss.navbar} ${isScroll ? headerCss.navbar_scroll : ''}`}>
 
         <a href="#" className={headerCss.logo}>
           <img src={logoImg} alt={'logoImg'} />
@@ -24,7 +44,12 @@ export default function Header() {
 
         <ul 
           id={headerCss.links}
-          className={`${headerCss.links} ${isOpen ? headerCss.active : ''}`} 
+          className={`
+            ${headerCss.links} 
+            ${isScroll ? headerCss.links_scroll : ''}
+            ${isOpen && isScroll ? headerCss.active_scroll : ''} 
+            ${isOpen && !isScroll ? headerCss.active : ''}
+          `} 
         >
 
           <li>
@@ -49,7 +74,7 @@ export default function Header() {
 
         </ul>
 
-        <div className={`${headerCss.account} ${isOpen ? headerCss.active_auth : ''}`}>
+        <div className={`${headerCss.account} ${isScroll ? headerCss.account_scroll : ''} ${isOpen ? headerCss.active_auth : ''}`}>
 
           <a href="#" className={headerCss.login}>Login</a>
           <a href="#" className={headerCss.register}>Register</a>
