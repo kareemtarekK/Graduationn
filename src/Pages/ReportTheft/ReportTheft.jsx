@@ -229,10 +229,9 @@ const ReportTheft = () => {
           </svg>
         </div>
         <p className={styles.disclaimerText}>
-          المعلومات المقدمة في هذا النموذج سرية وتستخدم فقط لأغراض التحقيق. للمزيد من المعلومات، يرجى التواصل مع
-          <a href="#" className={styles.disclaimerLink}>
-            مركز الشرطة المحلي
-          </a>
+        The information provided on this form is confidential and is used only for investigative purposes. For more information, please contact          
+        <a href="#" className={styles.disclaimerLink}>
+        Local police station          </a>
           .
         </p>
       </div>
@@ -241,8 +240,8 @@ const ReportTheft = () => {
     {showToast && (
       <div className={styles.toast}>
         <div className={styles.toastContent}>
-          <div className={styles.toastTitle}>تم استلام البلاغ</div>
-          <div className={styles.toastDescription}>سنتواصل معك قريبًا</div>
+          <div className={styles.toastTitle}>The report has been received</div>
+          <div className={styles.toastDescription}>We will contact you soon</div>
         </div>
         <button className={styles.toastClose} onClick={() => setShowToast(false)}>
           <svg
