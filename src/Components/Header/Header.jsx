@@ -68,11 +68,11 @@ export default function Header() {
           </li>
 
           <li>
-            <NavLink to={'/uv'}>Track Report</NavLink>
+            <NavLink to={'/trackreport'}>Track Report</NavLink>
           </li>
 
           <li>
-            <NavLink to={'/yyh'}>Appeaks</NavLink>
+            <NavLink to={'/Appeaks'}>Appeaks</NavLink>
           </li>
 
         </ul>

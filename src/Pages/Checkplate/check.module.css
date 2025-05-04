@@ -69,8 +69,8 @@
   .checkButton {
     width: 100%;
     padding: 12px;
-    background-color: #2563eb;
     color: white;
+    background-color: var(--blue-color);
     border: none;
     border-radius: 4px;
     font-size: 14px;

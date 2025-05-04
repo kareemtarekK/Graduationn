@@ -55,7 +55,7 @@
   
   .label {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 0.5rem;
     color: var(--black-color-2);
   }
@@ -65,7 +65,7 @@
   }
   
   .input {
-    border: 1px solid #9d9fa2;
+    border: 1px solid #a1a1a4 ;
     font-size: 1rem;
     width: 100%;
     padding: 10px;
@@ -95,7 +95,7 @@
     width: 100%;
     min-height: 100px;
     padding: 0.5rem 0.75rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid  #a1a1a4;
     border-radius: 0.375rem;
     font-size: 1rem;
     line-height: 1.5;
@@ -232,6 +232,8 @@
     display: flex;
     align-items: flex-start;
     margin-top: 1rem;
+    width: 100%;
+    text-align: center;
     font-size: 0.875rem;
     color: #6b7280;
   }
