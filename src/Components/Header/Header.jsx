@@ -64,7 +64,7 @@ export default function Header() {
           </li>
 
           <li>
-            <NavLink to={'/jjj'}>Report Theft</NavLink>
+            <NavLink to={'/reporttheft'}>Report Theft</NavLink>
           </li>
 
           <li>

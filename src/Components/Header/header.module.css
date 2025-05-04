@@ -5,6 +5,7 @@
     width: 100%;
     padding: 20px 4.5%;
     transition: 0.3s;
+    z-index: 1000;
 }
 
 .header_scroll{
