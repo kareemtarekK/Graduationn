@@ -30,7 +30,7 @@ const ReportTheft = () => {
     setIsSubmitting(false)
   }
   return (
-    <div className={styles.container} dir="rtl">
+    <div className={styles.container} >
     <div className={styles.wrapper}>
       <div className={styles.formCard}>
         <div className={styles.header}>
