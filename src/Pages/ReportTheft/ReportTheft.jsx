@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
 import { useState } from "react"
 import { useForm } from "react-hook-form"
@@ -41,12 +42,15 @@ const ReportTheft = () => {
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
           <div className={styles.formGroup}>
             <label htmlFor="fullName" className={styles.label}>
-              Full Name
+              
+              Full Name <span className={styles.required}>*</span>
             </label>
+            
             <div className={styles.inputWrapper}>
               <input
                 id="fullName"
                 type="text"
+                placeholder="Enter Your Name"
                 className={`${styles.input} ${errors.fullName ? styles.inputError : ""}`}
                 {...register("fullName", { required: "This field is required" })}
               />
@@ -56,12 +60,13 @@ const ReportTheft = () => {
 
           <div className={styles.formGroup}>
             <label htmlFor="phoneNumber" className={styles.label}>
-              Phone Number
+              Phone Number <span className={styles.required}>*</span>
             </label>
             <div className={styles.inputWrapper}>
               <input
                 id="phoneNumber"
                 type="tel"
+                placeholder="Enter Your Phone Number "
                 className={`${styles.input} ${errors.phoneNumber ? styles.inputError : ""}`}
                 {...register("phoneNumber", {
                   required: "This field is required",
@@ -77,12 +82,13 @@ const ReportTheft = () => {
 
           <div className={styles.formGroup}>
             <label htmlFor="plateNumber" className={styles.label}>
-            Plate number
+            Plate number <span className={styles.required}>*</span>
             </label>
             <div className={styles.inputWrapper}>
               <input
                 id="plateNumber"
                 type="text"
+                placeholder="Enter Your Plate Number"
                 className={`${styles.input} ${errors.plateNumber ? styles.inputError : ""}`}
                 {...register("plateNumber", { required: "This field is required" })}
               />
@@ -95,18 +101,20 @@ const ReportTheft = () => {
             National ID (optional)
             </label>
             <div className={styles.inputWrapper}>
-              <input id="nationalId" type="text" className={styles.input} {...register("nationalId")} />
+              <input id="nationalId" type="text" 
+              placeholder="Enter Your National Id" className={styles.input} {...register("nationalId")} />
             </div>
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="theftAddress" className={styles.label}>
-            The address where the theft occurred
+            The address where the theft occurred <span className={styles.required}>*</span>
             </label>
             <div className={styles.inputWrapper}>
               <input
                 id="theftAddress"
                 type="text"
+                placeholder="Enter YourThe address where the theft occurred "
                 className={`${styles.input} ${errors.theftAddress ? styles.inputError : ""}`}
                 {...register("theftAddress", { required: "This field is required" })}
               />
@@ -116,12 +124,13 @@ const ReportTheft = () => {
 
           <div className={styles.formGroup}>
             <label htmlFor="theftDateTime" className={styles.label}>
-            Approximate time and date of the theft
+            Approximate time and date of the theft <span className={styles.required}>*</span>
             </label>
             <div className={styles.inputWrapper}>
               <input
                 id="theftDateTime"
                 type="datetime-local"
+                placeholder="Approximate time and date of the theft"
                 className={`${styles.input} ${errors.theftDateTime ? styles.inputError : ""}`}
                 {...register("theftDateTime", { required: "This field is required" })}
               />
@@ -131,11 +140,12 @@ const ReportTheft = () => {
 
           <div className={styles.formGroup}>
             <label htmlFor="vehicleSpecs" className={styles.label}>
-            Car specifications (model, color, distinctive markings)
+            Car specifications (model, color, distinctive markings) <span className={styles.required}>*</span>
             </label>
             <div className={styles.inputWrapper}>
               <textarea
                 id="vehicleSpecs"
+                placeholder="Car specifications (model, color, distinctive markings"
                 className={`${styles.textarea} ${errors.vehicleSpecs ? styles.inputError : ""}`}
                 {...register("vehicleSpecs", { required: "This field is required" })}
               />
@@ -145,11 +155,12 @@ const ReportTheft = () => {
 
           <div className={styles.formGroup}>
             <label htmlFor="incidentDescription" className={styles.label}>
-            Describe the perpetrators or what happened in detail            
+            Describe the perpetrators or what happened in detail  <span className={styles.required}>*</span>          
             </label>
             <div className={styles.inputWrapper}>
               <textarea
                 id="incidentDescription"
+                placeholder="Describe the perpetrators or what happened in detail "
                 className={`${styles.textarea} ${errors.incidentDescription ? styles.inputError : ""}`}
                 {...register("incidentDescription", { required: "This field is required" })}
               />
@@ -231,8 +242,8 @@ const ReportTheft = () => {
         <p className={styles.disclaimerText}>
         The information provided on this form is confidential and is used only for investigative purposes. For more information, please contact          
         <a href="#" className={styles.disclaimerLink}>
-        Local police station          </a>
-          .
+        'Local police station'         </a>
+          
         </p>
       </div>
     </div>

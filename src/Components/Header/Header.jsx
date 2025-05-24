@@ -72,7 +72,7 @@ export default function Header() {
           </li>
 
           <li>
-            <NavLink to={'/Appeaks'}>Appeaks</NavLink>
+            <NavLink to={'/appeaks'}>Appeaks</NavLink>
           </li>
 
         </ul>

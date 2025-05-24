@@ -53,17 +53,21 @@
   width: calc(50% - 5px);
 }
 
-.input_field {
+/* .input_field {
   display: flex;
   flex-direction: column;
   gap: 5px;
-}
+} */
 
 .input_field:focus-within label {
   color: var(--blue-color);
 }
 
 .input_field label {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 16px;
   font-weight: 500;
   color: var(--black-color-2);
