@@ -31,7 +31,7 @@ export default function Hero() {
 
         </div>
 
-        <div className={hero.buttonContainer}>
+        {/* <div className={hero.buttonContainer}>
 
           <button className={hero.primaryButton}>
             <IoIosSearch />
@@ -43,7 +43,7 @@ export default function Hero() {
             <span>Report a Stolen Vehicle</span>
           </button>
 
-        </div>
+        </div> */}
 
       </div>
 
