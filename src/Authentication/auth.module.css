@@ -14,6 +14,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  
 }
 
 .container {
@@ -25,7 +26,16 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  margin-top: 5vh;
 }
+
+@media (max-width: 768px) {
+  .container {
+      margin-top: 14vh;
+  }
+}
+
 
 .header {
   font-size: 32px;
@@ -165,6 +175,7 @@
 @media only screen and (max-width: 570px) {
   .container {
     padding: 20px 4.5%;
+    
   }
 
   .three_field,

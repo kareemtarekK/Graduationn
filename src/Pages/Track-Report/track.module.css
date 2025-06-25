@@ -47,14 +47,23 @@
 }
 
 .labelWithError {
-  width: 100%;
+ 
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-size: 1rem;
   font-weight: 500;
   color: var(--black-color);
   gap: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.formGroup:focus-within .labelWithError {
+  color: var(--blue-color);
+}
+
+.labelWithError:hover {
+  transform: translateY(-1px);
+  color: var(--blue-color);
 }
 
 .input {
@@ -63,22 +72,35 @@
   border: solid 1px var(--black-color);
   border-radius: 8px;
   font-size: 1rem;
-  transition: border-color 0.15s ease-in-out;
-  outline: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
 }
 
 .input:focus {
   border-color: var(--blue-color);
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 0px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
+
+.input:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .required {
   color: #ef4444;
+  animation: pulse 2s infinite;
 }
 
 .errorText {
   color: #ef4444;
   font-size: 0.875rem;
   font-weight: normal;
+  animation: slideInDown 0.3s ease-out;
 }
 
 .hint {
@@ -101,13 +123,13 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background-color 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
 }
 
 .submitButton:hover {
-  background-color: #003d82;
+  background-color: #2563eb;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .submitButton:active {
@@ -124,6 +146,27 @@
   from {
     opacity: 0;
     transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
   }
   to {
     opacity: 1;

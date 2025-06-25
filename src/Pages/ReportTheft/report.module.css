@@ -7,9 +7,10 @@
 
 .wrapper {
   width: 100%;
-  max-width: 768px;
+  max-width: 1070px;
   padding: 1.5rem;
   margin: 0rem auto;
+  animation: fadeInDown 0.8s ease-out;
 }
 
 /* Form Card */
@@ -20,26 +21,34 @@
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  animation: slideInFromTop 0.9s ease-out;
+  transition: box-shadow 0.3s ease;
+}
+
+.formCard:hover {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 /* Header */
 .header {
   margin-bottom: 1.5rem;
   text-align: center;
+  animation: fadeInDown 1s ease-out;
 }
 
 .title {
   font-size: 2rem;
   font-weight: 700;
   color: #1f2937;
+  animation: textGlow 1.2s ease-out;
 }
 
 .subtitle {
   margin-top: 1rem;
   letter-spacing: .2px;
   color: #6b7280;
+  animation: fadeIn 1.3s ease-out 0.4s both;
 }
-
 
 /* Form */
 .form {
@@ -48,52 +57,117 @@
   gap: 1rem;
 }
 
+/* Form Row - NEW: For 2 inputs per row */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  animation: slideInFromTop 0.8s ease-out;
+}
+
+/* Responsive: Stack on mobile */
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 .formGroup {
   display: flex;
   flex-direction: column;
+  animation: fadeInDown 0.7s ease-out;
+  animation-fill-mode: both;
 }
 
+.formGroup:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.formGroup:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.formGroup:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.formGroup:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.formGroup:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.formGroup:nth-child(6) {
+  animation-delay: 0.6s;
+}
 
 .label {
   font-size: 1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
   color: var(--black-color-2);
-  transition: 0.3s;    
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.formGroup:focus-within .label {
+  color: var(--blue-color);
+  transform: translateY(-1px);
+}
+
+/* تحديث hover effect للـ label */
+.label:hover {
+  transform: translateY(-1px);
+  color: var(--blue-color);
 }
 
 .inputWrapper {
   width: 100%;
 }
+
 .required {
   color: #ef4444;
+  animation: pulse 2s infinite;
 }
 
-.input,.textarea {
-  border:solid 1px var(--black-color-2);
+.input,
+.textarea {
+  border: solid 1px var(--black-color-2);
   font-size: 1rem;
   width: 100%;
   padding: 10px;
   font-size: 16px;
   color: var(--black-color);
   border-radius: 8px;
-  outline: none;
-
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
   border-color: var(--blue-color);
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 0px;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+}
 
+.input:hover,
+.textarea:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .inputError {
   border-color: #ef4444;
+  /* animation: shake 0.5s ease-in-out; - احذف هذا السطر */
 }
 
 .errorMessage {
   margin-top: 0.25rem;
   font-size: 0.875rem;
   color: #ef4444;
+  animation: slideInDown 0.3s ease-out;
 }
 
 .textarea {
@@ -101,27 +175,29 @@
   font-size: 1rem;
   line-height: 1.5;
   resize: vertical;
-  transition: border-color 0.15s ease-in-out;
-  /*  */ 
-
-  border:solid 1px var(--black-color-2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: solid 1px var(--black-color-2);
   font-size: 1rem;
   width: 100%;
   padding: 10px;
   color: var(--black-color);
   border-radius: 8px;
-  outline: none;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .textarea:focus {
-  outline: none;
   border-color: #3b82f6;
+  outline: 2px solid rgba(59, 130, 246, 0.5);
+  outline-offset: 0px;
   box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.25);
+  transform: translateY(-2px);
 }
 
 /* File Upload */
 .fileUpload {
   width: 100%;
+  animation: bounceIn 0.8s ease-out;
 }
 
 .fileUploadLabel {
@@ -135,11 +211,15 @@
   border-radius: 0.5rem;
   background-color: #f9fafb;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
+  transition: all 0.3s ease;
+  transform: scale(1);
 }
 
 .fileUploadLabel:hover {
   background-color: #f3f4f6;
+  border-color: var(--blue-color);
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
 }
 
 .fileUploadContent {
@@ -155,12 +235,23 @@
   height: 2rem;
   margin-bottom: 0.5rem;
   color: #6b7280;
+  transition: all 0.3s ease;
+}
+
+.fileUploadLabel:hover .uploadIcon {
+  color: var(--blue-color);
+  transform: translateY(-2px);
 }
 
 .uploadText {
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: #6b7280;
+  transition: color 0.3s ease;
+}
+
+.fileUploadLabel:hover .uploadText {
+  color: var(--blue-color);
 }
 
 .uploadSubtext {
@@ -183,20 +274,30 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.15s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(0);
+  animation: slideInFromTop 0.8s ease-out;
 }
 
 .submitButton:hover {
   background-color: #2563eb;
+  transform: translateY(-2px);
+  /* box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3); */
+}
+
+.submitButton:active {
+  transform: translateY(0);
 }
 
 .submitButton:disabled {
   opacity: 0.7;
   cursor: not-allowed;
+  transform: translateY(0);
 }
 
 .buttonContent {
   display: flex;
+  gap: 5px;
   align-items: center;
   justify-content: center;
 }
@@ -205,6 +306,11 @@
   width: 1.25rem;
   height: 1.25rem;
   margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.submitButton:hover .sendIcon {
+  transform: translateX(3px);
 }
 
 .loadingWrapper {
@@ -220,15 +326,6 @@
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .loadingCircle {
   opacity: 0.25;
 }
@@ -239,13 +336,18 @@
 
 /* Disclaimer */
 .disclaimer {
-  display: flex;
-  align-items: flex-start;
   margin-top: 1rem;
   width: 100%;
   text-align: center;
-  font-size: 0.875rem;
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
   color: #6b7280;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: flex-start;
+  padding: 0.75rem;
+  animation: fadeIn 1.6s ease-out 1s both;
 }
 
 .disclaimerIcon {
@@ -257,24 +359,30 @@
   width: 1.25rem;
   height: 1.25rem;
   color: #9ca3af;
+  animation: float 6s ease-in-out infinite;
 }
 
 .disclaimerText {
   margin-right: 0.5rem;
   align-items: flex-start;
-  font-size: 12px;
+  font-size: 14px;
   color: #6b7280;
-  
 }
-
+.disclaimerText span{
+  color: #9ca3af;
+  font-size: 18px;
+  height: 1.25rem;
+}
 .disclaimerLink {
   margin-left: .5rem;
   color: #3b82f6;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
 .disclaimerLink:hover {
   text-decoration: underline;
+  transform: translateY(-1px);
 }
 
 /* Toast Notification */
@@ -292,18 +400,7 @@
   border: 1px solid #e5e7eb;
   border-radius: 0.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  animation: slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .toastContent {
@@ -315,11 +412,13 @@
 .toastTitle {
   font-size: 0.875rem;
   font-weight: 600;
+  animation: fadeIn 0.6s ease-out 0.4s both;
 }
 
 .toastDescription {
   font-size: 0.875rem;
   opacity: 0.9;
+  animation: fadeIn 0.6s ease-out 0.8s both;
 }
 
 .toastClose {
@@ -328,10 +427,14 @@
   color: #6b7280;
   cursor: pointer;
   padding: 0.25rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
 }
 
 .toastClose:hover {
   color: #1f2937;
+  background-color: #f3f4f6;
+  transform: rotate(90deg);
 }
 
 /* Responsive Adjustments */
@@ -347,5 +450,179 @@
 
   .toast {
     max-width: calc(100% - 2rem);
+  }
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes textGlow {
+  from {
+    opacity: 0;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  to {
+    opacity: 1;
+    text-shadow: none;
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Spinner animation */
+.spinnerIcon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

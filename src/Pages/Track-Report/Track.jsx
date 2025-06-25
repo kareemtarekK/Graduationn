@@ -227,10 +227,9 @@ function Track() {
               <div>
                 Report Number <span className={styles.required}>*</span>
               </div>
-              <div> 
+              <div>
                 {validationErrors.reportId && <span className={styles.errorText}>{validationErrors.reportId}</span>}
               </div>
-             
             </label>
             <input
               type="text"
@@ -245,12 +244,13 @@ function Track() {
           <div className={styles.formGroup}>
             <label htmlFor="plateNumber" className={styles.labelWithError}>
               <div>
-                 Plate Number <span className={styles.required}>*</span>
+                Plate Number <span className={styles.required}>*</span>
               </div>
               <div>
-                {validationErrors.plateNumber && <span className={styles.errorText}>{validationErrors.plateNumber}</span>}
+                {validationErrors.plateNumber && (
+                  <span className={styles.errorText}>{validationErrors.plateNumber}</span>
+                )}
               </div>
-          
             </label>
             <input
               type="text"

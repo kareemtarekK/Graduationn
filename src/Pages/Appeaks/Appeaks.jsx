@@ -328,7 +328,7 @@ const Appeaks = () => {
             </svg>
           </div>
           <p className={styles.disclaimerText}>
-            All grievances are reviewed thoroughly by our team. Please ensure all information provided is accurate and
+             All grievances are reviewed thoroughly by our team. Please ensure all information provided is accurate and
             truthful. Submitting false information may result in permanent account suspension.
           </p>
         </div>
