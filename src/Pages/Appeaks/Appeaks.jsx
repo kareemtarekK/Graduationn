@@ -61,11 +61,11 @@ const Appeaks = () => {
     const newErrors = {}
 
     if (!formData.reportNumber.trim()) {
-      newErrors.reportNumber = "Report number is required"
+      newErrors.reportNumber = " * Report number is required"
     }
 
     if (!formData.reason.trim()) {
-      newErrors.reason = "Reason for grievance is required"
+      newErrors.reason = "*Reason for grievance is required"
     } else if (formData.reason.trim().length < 20) {
       newErrors.reason = "Please provide a detailed explanation (at least 20 characters)"
     }
@@ -153,8 +153,13 @@ const Appeaks = () => {
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={styles.formGroup}>
             <label htmlFor="reportNumber" className={styles.label}>
-              Report Number <span className={styles.required}>*</span>
+              <div className={styles.labeltitle}>
+                    Report Number <span className={styles.required}>*</span>
+              </div>
+                {errors.reportNumber && <p className={styles.errorMessage}>{errors.reportNumber}</p>}
+
             </label>
+
             <input
               type="text"
               id="reportNumber"
@@ -164,12 +169,17 @@ const Appeaks = () => {
               className={`${styles.input} ${errors.reportNumber ? styles.inputError : ""}`}
               placeholder="Enter the rejected report number"
             />
-            {errors.reportNumber && <p className={styles.errorMessage}>{errors.reportNumber}</p>}
+            {/*  */}
           </div>
 
           <div className={styles.formGroup}>
             <label htmlFor="reason" className={styles.label}>
-              Reason for Grievance <span className={styles.required}>*</span>
+
+               <div className={styles.labeltitle}>
+                       Reason for Grievance <span className={styles.required}>*</span>
+              </div>
+
+             {errors.reason && <p className={styles.errorMessage}>{errors.reason}</p>}             
             </label>
             <textarea
               id="reason"
@@ -180,7 +190,7 @@ const Appeaks = () => {
               placeholder="Please explain in detail why you believe the report rejection was incorrect"
               rows={5}
             />
-            {errors.reason && <p className={styles.errorMessage}>{errors.reason}</p>}
+            
           </div>
 
           <div className={styles.formGroup}>

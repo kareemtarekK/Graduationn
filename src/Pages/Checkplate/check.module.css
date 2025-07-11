@@ -91,10 +91,11 @@
   justify-content: space-between;
   font-size: 1rem;
   font-weight: 500;
-  color: var(--black-color);
+  color: var(--black-color-2);
   gap: 0.25rem;
   transition: all 0.3s ease;
   transform: translateY(0);
+
 }
 
 .formGroup:focus-within .label {
@@ -108,14 +109,17 @@
 }
 
 .error_label {
+ font-size: 0.75rem;
   color: var(--red-color);
-  font-size: 10px;
+  margin-top: 0.25rem;
+  font-weight: normal;
   animation: slideInDown 0.3s ease-out;
 }
 
 .required {
-  color: #ef4444;
-  animation: pulse 2s infinite;
+  color: var(--red-color);
+  font-weight: normal;
+  animation: slideInDown 0.3s ease-out;
 }
 
 .selectWrapper {
@@ -257,7 +261,7 @@
 }
 
 .checkButton:hover {
-  background-color: #2563eb;
+  background-color: #305fa2e6;
   transform: translateY(-2px);
   /* box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3); */
 }
@@ -301,6 +305,7 @@
   width: 16px;
   height: 16px;
   transition: transform 0.3s ease;
+  font-weight: 700;
 }
 
 .checkButton:hover .searchIcon {
@@ -344,7 +349,7 @@
 
 .alertIcon {
   color: #ef4444;
-  width: 20px;
+  width: 29px;
   height: 20px;
   flex-shrink: 0;
   animation: float 6s ease-in-out infinite;

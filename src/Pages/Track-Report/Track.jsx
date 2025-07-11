@@ -1,347 +1,248 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import { FiSearch, FiClock, FiX, FiCheck, FiAlertCircle, FiMessageSquare } from "react-icons/fi"
+import { AiOutlineLoading3Quarters } from "react-icons/ai"
 import styles from "./track.module.css"
-import { Link } from "react-router-dom"
-import { FaSearch, FaSpinner, FaDownload, FaBell } from "react-icons/fa"
-import { jsPDF } from "jspdf"
-import { motion } from "framer-motion"
-import { Toaster, toast } from "react-hot-toast"
 
-const staticReports = [
-  {
-    id: "REP-2025-0001",
-    vehicleInfo: { plateNumber: "ABC 1234", type: "Toyota Camry", color: "White" },
-    reportDate: "May 11, 2025 - 2:15 PM",
-    details: "The vehicle was stolen from the house in Al-Nozha at 1 AM.",
-    status: "received",
-    adminResponse: "",
-    lastUpdate: "May 11, 2025 - 2:15 PM",
-  },
-  {
-    id: "REP-2025-0002",
-    vehicleInfo: { plateNumber: "SAD 5678", type: "Honda Accord", color: "Black" },
-    reportDate: "May 10, 2025 - 10:30 AM",
-    details: "The car was stolen from a shopping center around 9 PM.",
-    status: "reviewing",
-    adminResponse: "",
-    lastUpdate: "May 10, 2025 - 3:45 PM",
-  },
-  {
-    id: "REP-2025-0003",
-    vehicleInfo: { plateNumber: "TKM 9012", type: "Nissan Patrol", color: "Gray" },
-    reportDate: "May 8, 2025 - 8:20 AM",
-    details: "The vehicle was last seen on May 7 at 11 PM in Al-Rawda.",
-    status: "approved",
-    adminResponse: "The report is accepted. An investigator will contact you soon.",
-    lastUpdate: "May 9, 2025 - 1:10 PM",
-  },
-  {
-    id: "REP-2025-0004",
-    vehicleInfo: { plateNumber: "LOW 3456", type: "Mercedes E200", color: "Silver" },
-    reportDate: "May 5, 2025 - 4:50 PM",
-    details: "Car was stolen from company parking at the industrial area.",
-    status: "rejected",
-    adminResponse: "Rejected due to lack of documents. Please provide images and proof.",
-    lastUpdate: "May 7, 2025 - 11:25 AM",
-  },
+const mockReports = [
+  { id: "RPT-2025-001", date: "January 15, 2025", status: "Pending" },
+  { id: "RPT-2025-002", date: "January 14, 2025", status: "Completed" },
+  { id: "RPT-2025-003", date: "January 13, 2025", status: "Closed" },
+  { id: "RPT-2025-004", date: "January 12, 2025", status: "Pending" },
+  { id: "RPT-2025-005", date: "January 11, 2025", status: "Completed" },
+  { id: "RPT-2025-006", date: "January 10, 2025", status: "Closed" },
+  { id: "RPT-2025-007", date: "January 9, 2025", status: "Pending" },
+  { id: "RPT-2025-008", date: "January 8, 2025", status: "Completed" },
 ]
 
-function Track() {
-  const [reportId, setReportId] = useState("")
-  const [plateNumber, setPlateNumber] = useState("")
-  const [report, setReport] = useState(null)
+const Track = () => {
+  const navigate = useNavigate()
+  const [reportsData, setReportsData] = useState([])
+  const [searchInput, setSearchInput] = useState("")
+  const [filteredData, setFilteredData] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState("")
-  const [validationErrors, setValidationErrors] = useState({})
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [searching, setSearching] = useState(false)
-  const [notificationSubscribed, setNotificationSubscribed] = useState(false)
-  const resultRef = useRef(null)
+  const [validationError, setValidationError] = useState("")
+  const [pageLoaded, setPageLoaded] = useState(false)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const errors = {}
-    if (!reportId.trim()) errors.reportId = "* Report ID is required"
-    if (!plateNumber.trim()) errors.plateNumber = "* Plate number is required"
-
-    if (Object.keys(errors).length > 0) {
-      setValidationErrors(errors)
-      setReport(null)
-      setError("")
-      return
-    }
-
-    setValidationErrors({})
-    setSearching(true)
-    setIsSubmitted(true)
-    setNotificationSubscribed(false)
-
+  // Page entrance animation
+  useEffect(() => {
     setTimeout(() => {
-      const foundReport = staticReports.find((r) => r.id === reportId && r.vehicleInfo.plateNumber === plateNumber)
+      setPageLoaded(true)
+    }, 100)
+  }, [])
 
-      if (foundReport) {
-        setReport(foundReport)
-        setError("")
-        toast.success("Report found successfully!")
-      } else {
-        setReport(null)
-        setError("No report found with this data. Please check and try again.")
-        toast.error("No report found with this data.")
-      }
-
-      setSearching(false)
-
-      setTimeout(() => {
-        if (resultRef.current) {
-          const offset = resultRef.current.offsetTop
-          window.scrollTo({
-            top: offset - 100,
-            behavior: "smooth",
-          })
-        }
-      }, 200)
-    }, 1500)
-  }
+  // Simulate API call
+  useEffect(() => {
+    setIsLoading(true)
+    setTimeout(() => {
+      setReportsData(mockReports)
+      setFilteredData(mockReports)
+      setIsLoading(false)
+    }, 1000)
+  }, [])
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case "received":
-        return "📨"
-      case "reviewing":
-        return "🔍"
-      case "approved":
-        return "✅"
-      case "rejected":
-        return "❌"
+      case "Pending":
+        return <FiClock className={styles.statusIconElement} />
+      case "Closed":
+        return <FiX className={styles.statusIconElement} />
+      case "Completed":
+        return <FiCheck className={styles.statusIconElement} />
       default:
-        return "❓"
+        return <FiAlertCircle className={styles.statusIconElement} />
     }
   }
 
-  const getStatusText = (status) => {
-    switch (status) {
-      case "received":
-        return "Received"
-      case "reviewing":
-        return "Under Review"
-      case "approved":
-        return "Approved"
-      case "rejected":
-        return "Rejected"
-      default:
-        return "Unknown"
+  const handleSearch = () => {
+    setError("")
+    setValidationError("")
+
+    // Validation: Check if input is empty
+    if (!searchInput.trim()) {
+      setValidationError("Report ID is required")
+      return
+    }
+
+    const filtered = reportsData.filter((report) => report.id.toLowerCase().includes(searchInput.toLowerCase()))
+
+    if (filtered.length === 0) {
+      setError("No report found with this number")
+      setFilteredData([])
+    } else {
+      setFilteredData(filtered)
     }
   }
 
-  const getStatusClass = (status) => {
-    switch (status) {
-      case "received":
-        return styles.statusReceived
-      case "reviewing":
-        return styles.statusReviewing
-      case "approved":
-        return styles.statusApproved
-      case "rejected":
-        return styles.statusRejected
-      default:
-        return ""
+  const handleInputChange = (value) => {
+    setSearchInput(value)
+    setError("")
+    setValidationError("")
+
+    if (!value.trim()) {
+      setFilteredData(reportsData)
     }
   }
 
-  const handleDownloadPDF = () => {
-    if (!report) return
-
-    toast.loading("Generating PDF...", { duration: 1500 })
-
-    setTimeout(() => {
-      const doc = new jsPDF()
-
-      // Add content
-      doc.setFontSize(22)
-      doc.text("Report Status", 105, 20, { align: "center" })
-
-      doc.setFontSize(14)
-      doc.text(`Report ID: ${report.id}`, 20, 40)
-      doc.text(`Status: ${getStatusText(report.status)}`, 20, 50)
-      doc.text(`Report Date: ${report.reportDate}`, 20, 60)
-      doc.text(`Last Update: ${report.lastUpdate}`, 20, 70)
-
-      doc.setFontSize(16)
-      doc.text("Vehicle Information", 20, 90)
-      doc.setFontSize(12)
-      doc.text(`Plate Number: ${report.vehicleInfo.plateNumber}`, 30, 100)
-      doc.text(`Type: ${report.vehicleInfo.type}`, 30, 110)
-      doc.text(`Color: ${report.vehicleInfo.color}`, 30, 120)
-
-      doc.setFontSize(16)
-      doc.text("Report Details", 20, 140)
-      doc.setFontSize(12)
-
-      // Split long text to fit on page
-      const splitDetails = doc.splitTextToSize(report.details, 170)
-      doc.text(splitDetails, 30, 150)
-
-      if (report.adminResponse) {
-        const yPos = 150 + splitDetails.length * 10 + 10
-        doc.setFontSize(16)
-        doc.text("Admin Response", 20, yPos)
-        doc.setFontSize(12)
-        const splitResponse = doc.splitTextToSize(report.adminResponse, 170)
-        doc.text(splitResponse, 30, yPos + 10)
-      }
-
-      // Save the PDF
-      doc.save(`Report-${report.id}.pdf`)
-      toast.success("PDF downloaded successfully!")
-    }, 1500)
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch()
+    }
   }
 
-  const handleSubscribeNotification = () => {
-    setNotificationSubscribed(true)
-    toast.success("You will be notified when there's an update on this report!")
+  const handleAppeaksNavigation = (reportId) => {
+    // Scroll to top of page
+    window.scrollTo(0, 0)
+    // Navigate to appeals page with specific report ID
+    navigate(`/appeaks/${reportId}`)
   }
 
   return (
-    <div className={styles.container}>
-      <Toaster position="top-right" />
-
-      <motion.div
-        className={styles.header}
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        <h1>Track Report Status</h1>
-        <p>Please enter the Report Number and Plate Number below to track the status of your report accurately</p>
-      </motion.div>
-
-      <motion.div
-        className={styles.formContainer}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-      >
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.formGroup}>
-            <label htmlFor="reportId" className={styles.labelWithError}>
-              <div>
-                Report Number <span className={styles.required}>*</span>
+    <div className={`${styles.container} ${pageLoaded ? styles.pageLoaded : ""}`}>
+      <div className={styles.wrapper}>
+        {/* Search Section with Title */}
+        <div className={`${styles.searchSection} ${styles.fadeInDown}`} style={{ animationDelay: "0.2s" }}>
+          <div className={styles.searchCard}>
+            <div className={styles.searchContent}>
+              {/* Title and Subtitle */}
+              <div className={styles.titleSection}>
+                <h1 className={styles.title}>Reports Tracking & Follow-up</h1>
+                <p className={styles.subtitle}>Track and monitor your submitted reports</p>
               </div>
-              <div>
-                {validationErrors.reportId && <span className={styles.errorText}>{validationErrors.reportId}</span>}
-              </div>
-            </label>
-            <input
-              type="text"
-              id="reportId"
-              placeholder="e.g., REP-2025-0001"
-              value={reportId}
-              onChange={(e) => setReportId(e.target.value)}
-              className={styles.input}
-            />
-          </div>
 
-          <div className={styles.formGroup}>
-            <label htmlFor="plateNumber" className={styles.labelWithError}>
-              <div>
-                Plate Number <span className={styles.required}>*</span>
-              </div>
-              <div>
-                {validationErrors.plateNumber && (
-                  <span className={styles.errorText}>{validationErrors.plateNumber}</span>
-                )}
-              </div>
-            </label>
-            <input
-              type="text"
-              id="plateNumber"
-              placeholder="e.g., ABC 1234"
-              value={plateNumber}
-              onChange={(e) => setPlateNumber(e.target.value)}
-              className={styles.input}
-            />
-          </div>
-
-          <button type="submit" className={styles.submitButton} disabled={searching}>
-            {searching ? <FaSpinner className={styles.spinnerIcon} /> : <FaSearch />} Check Status
-          </button>
-        </form>
-      </motion.div>
-
-      <div ref={resultRef}>
-        {isSubmitted && (
-          <div className={styles.resultContainer}>
-            {error ? (
-              <div className={styles.errorMessage}>{error}</div>
-            ) : report ? (
-              <div className={styles.reportDetails}>
-                <div className={styles.reportHeader}>
-                  <div className={styles.reportIdSection}>
-                    <h2>Report ID: #{report.id}</h2>
-                    <span className={`${styles.statusBadge} ${getStatusClass(report.status)}`}>
-                      {getStatusIcon(report.status)} {getStatusText(report.status)}
-                    </span>
-                  </div>
-                  <div className={styles.dateSection}>
-                    <p>Report Date: {report.reportDate}</p>
-                    <p>Last Update: {report.lastUpdate}</p>
-                  </div>
-                </div>
-
-                <div className={styles.vehicleSection}>
-                  <h3>Vehicle Info:</h3>
-                  <div className={styles.vehicleInfo}>
-                    <p>
-                      <strong>Plate Number:</strong> {report.vehicleInfo.plateNumber}
-                    </p>
-                    <p>
-                      <strong>Type:</strong> {report.vehicleInfo.type}
-                    </p>
-                    {report.vehicleInfo.color && (
-                      <p>
-                        <strong>Color:</strong> {report.vehicleInfo.color}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className={styles.detailsSection}>
-                  <h3>Report Details:</h3>
-                  <p>{report.details}</p>
-                </div>
-
-                {report.adminResponse && (
-                  <div className={styles.responseSection}>
-                    <h3>Admin Response:</h3>
-                    <p>{report.adminResponse}</p>
+              <div className={styles.inputGroup}>
+                <label htmlFor="search" className={styles.label}>
+                  Search Reports <span className={styles.required}>*</span>
+                </label>
+                <input
+                  id="search"
+                  type="text"
+                  placeholder="Enter report number (e.g., RPT-2025-001)"
+                  value={searchInput}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  className={`${styles.input} ${validationError ? styles.inputError : ""}`}
+                />
+                {validationError && (
+                  <div className={styles.validationError}>
+                    <FiAlertCircle className={styles.validationIcon} />
+                    {validationError}
                   </div>
                 )}
+              </div>
+              <button onClick={handleSearch} className={styles.searchButton}>
+                <FiSearch className={styles.searchIcon} />
+                Search Reports
+              </button>
+            </div>
+          </div>
+        </div>
 
-                <div className={styles.extraActions}>
-                  <button onClick={handleDownloadPDF} className={styles.downloadButton}>
-                    <FaDownload style={{ marginRight: "8px" }} /> Download as PDF
-                  </button>
+        {/* Error Message */}
+        {error && (
+          <div className={`${styles.errorSection} ${styles.fadeInDown}`}>
+            <div className={styles.errorMessage}>
+              <FiAlertCircle className={styles.errorIcon} />
+              {error}
+            </div>
+          </div>
+        )}
 
-                  {report.status === "reviewing" && !notificationSubscribed && (
-                    <button onClick={handleSubscribeNotification} className={styles.reminderButton}>
-                      <FaBell style={{ marginRight: "8px" }} /> Notify me when updated
-                    </button>
-                  )}
+        {/* Loading Spinner */}
+        {isLoading && (
+          <div className={`${styles.loadingSection} ${styles.fadeInDown}`}>
+            <AiOutlineLoading3Quarters className={styles.loadingIcon} />
+            <p className={styles.loadingText}>Loading reports...</p>
+          </div>
+        )}
 
-                  {report.status === "reviewing" && notificationSubscribed && (
-                    <div className={styles.notificationConfirm}>✓ You will be notified when updated</div>
+        {/* Reports Grid */}
+        {!isLoading && (
+          <div className={`${styles.reportsGrid} ${styles.fadeInDown}`} style={{ animationDelay: "0.4s" }}>
+            {filteredData.map((report, index) => (
+              <div
+                key={`${report.id}-${index}`}
+                className={styles.reportCard}
+                style={{
+                  animationDelay: `${0.6 + index * 0.1}s`,
+                }}
+              >
+                <div className={styles.cardContent}>
+                  {/* Header with status */}
+                  <div className={styles.cardHeader}>
+                    <span className={styles.reportLabel}>Report -</span>
+                    <span className={`${styles.statusBadge} ${styles[`status${report.status}`]}`}>{report.status}</span>
+                  </div>
+
+                  {/* Report ID */}
+                  <div className={styles.reportId}>
+                    <h3>{report.id}</h3>
+                  </div>
+
+                  {/* Date and Icon */}
+                  <div className={styles.cardFooter}>
+                    <span className={styles.reportDate}>{report.date}</span>
+                    <div className={styles.statusIcon}>{getStatusIcon(report.status)}</div>
+                  </div>
+                  {/* Appeal Button - Only for Closed Reports */}
+                  {report.status === "Closed" && (
+                    <div className={styles.appealButtonContainer}>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          handleAppeaksNavigation(report.id)
+                        }}
+                        className={styles.appealButton}
+                      >
+                        <FiMessageSquare className={styles.appealIcon} />
+                        Submit Appeal
+                      </button>
+                    </div>
                   )}
                 </div>
-
-                {report.status === "rejected" && (
-                  <div className={styles.appealSection}>
-                    <Link to={`/appeaks/${report.id}`} className={styles.appealButton}>
-                      Submit Appeal
-                    </Link>
-                  </div>
-                )}
               </div>
-            ) : null}
+            ))}
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!isLoading && filteredData.length === 0 && !error && (
+          <div className={`${styles.emptyState} ${styles.fadeInDown}`}>
+            <FiSearch className={styles.emptyIcon} />
+            <div className={styles.emptyMessage}>No reports to display</div>
+            <p className={styles.emptySubtext}>Try adjusting your search criteria</p>
+          </div>
+        )}
+
+        {/* Stats Summary */}
+        {!isLoading && filteredData.length > 0 && (
+          <div className={`${styles.summarySection} ${styles.fadeInDown}`} style={{ animationDelay: "0.8s" }}>
+            <div className={styles.summaryCard}>
+              <h3 className={styles.summaryTitle}>Summary</h3>
+              <div className={styles.statsGrid}>
+                <div className={styles.statItem}>
+                  <div className={`${styles.statNumber} ${styles.pendingColor}`}>
+                    {filteredData.filter((r) => r.status === "Pending").length}
+                  </div>
+                  <div className={styles.statLabel}>Pending</div>
+                </div>
+                <div className={styles.statItem}>
+                  <div className={`${styles.statNumber} ${styles.completedColor}`}>
+                    {filteredData.filter((r) => r.status === "Completed").length}
+                  </div>
+                  <div className={styles.statLabel}>Completed</div>
+                </div>
+                <div className={styles.statItem}>
+                  <div className={`${styles.statNumber} ${styles.closedColor}`}>
+                    {filteredData.filter((r) => r.status === "Closed").length}
+                  </div>
+                  <div className={styles.statLabel}>Closed</div>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>

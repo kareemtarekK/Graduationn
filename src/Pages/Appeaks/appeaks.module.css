@@ -73,6 +73,8 @@ body {
   color: var(--black-color-2);
   transition: all 0.3s ease;
   transform: translateY(0);
+  display: flex;
+  justify-content: space-between;
 }
 
 .formGroup:focus-within .label {
@@ -124,8 +126,9 @@ body {
 
 .errorMessage {
   font-size: 0.75rem;
-  color: #ef4444;
+  color: var(--red-color);
   margin-top: 0.25rem;
+  font-weight: normal;
   animation: slideInDown 0.3s ease-out;
 }
 
@@ -299,9 +302,7 @@ body {
 }
 
 .submitButton:hover {
-  background-color: #2563eb;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+    background-color: #305fa2e6;
 }
 
 .submitButton:active {

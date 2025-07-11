@@ -100,12 +100,17 @@
 }
 
 .label {
+  width: 100%;
+  display: flex;
+  align-items: center;
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 0.5rem;
   color: var(--black-color-2);
+  gap: 0.25rem;
   transition: all 0.3s ease;
   transform: translateY(0);
+  margin-bottom: 0.2rem;
+
 }
 
 .formGroup:focus-within .label {
@@ -146,7 +151,6 @@
 .input:focus,
 .textarea:focus {
   border-color: var(--blue-color);
-  outline: 2px solid rgba(59, 130, 246, 0.5);
   outline-offset: 0px;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
@@ -161,6 +165,7 @@
 .inputError {
   border-color: #ef4444;
   /* animation: shake 0.5s ease-in-out; - احذف هذا السطر */
+  
 }
 
 .errorMessage {
@@ -280,7 +285,7 @@
 }
 
 .submitButton:hover {
-  background-color: #2563eb;
+  background-color: #305fa2e6;
   transform: translateY(-2px);
   /* box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3); */
 }
